@@ -1,0 +1,13 @@
+{
+  "": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/release/QuickSearch.build/QuickSearch.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/release/QuickSearch.build/QuickSearch.o",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/release/QuickSearch.build/master.swiftdeps"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/QuickSearch/main.swift": {
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/release/QuickSearch.build/main.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/release/QuickSearch.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/release/QuickSearch.build/main.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/release/QuickSearch.build/main.dia"
+  }
+}

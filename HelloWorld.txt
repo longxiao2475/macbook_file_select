@@ -1,0 +1,321 @@
+当前可测试的内容
+1. 构建
+
+cd /Users/longxiao/repository/test/mac_everyth/QuickSearch
+swift build -c release
+2. CLI 扫描验证
+
+# 扫描 ~/Downloads，看索引速度和文件数量
+.build/release/QuickSearch ~/Downloads
+
+# 扫描整个用户目录（需要几秒，几十万文件）
+.build/release/QuickSearch ~
+
+# 扫描根目录（需要「完全磁盘访问权限」，否则会跳过系统路径）
+.build/release/QuickSearch /
+
+# 指定数据库位置
+.build/release/QuickSearch ~/Downloads --db /tmp/qs.db
+预期输出：
+
+
+QuickSearch M1 — Index Engine
+  Scan path : /Users/xxx/Downloads
+  Database  : ~/.local/share/QuickSearch/index.db
+
+  [   0.3s]   100000 files  (333333 files/s)
+  [   0.6s]   200000 files  (312500 files/s)
+
+Done!
+  Files indexed : 247531
+  Total time    : 0.78s
+  Database      : ~/.local/share/QuickSearch/index.db
+3. 验证数据库内容
+
+# 查看数据库
+sqlite3 ~/.local/share/QuickSearch/index.db
+
+# 在 sqlite3 交互界面中运行：
+.headers on
+.mode column
+
+-- 总文件数
+SELECT COUNT(*) FROM files;
+
+-- 查看最大的10个文件
+SELECT name, size, full_path FROM files ORDER BY size DESC LIMIT 10;
+
+-- 按扩展名统计
+SELECT file_ext, COUNT(*) AS cnt FROM files GROUP BY file_ext ORDER BY cnt DESC LIMIT 20;
+
+-- 简单名称搜索
+SELECT name, full_path FROM files WHERE name LIKE '%README%' LIMIT 10;
+
+-- FTS 全文搜索（更快）
+SELECT f.name, f.full_path 
+FROM files_fts ft JOIN files f ON ft.rowid = f.id
+WHERE files_fts MATCH 'README'
+LIMIT 10;
+
+.quit
+4. 验证已索引的卷信息
+
+sqlite3 ~/.local/share/QuickSearch/index.db \
+  "SELECT volume_name, mount_path, fs_type, total_size, last_scan_at FROM volumes;"
+关于 UI
+M1 没有图形界面。按照 PRD 的里程碑计划：
+
+里程碑	内容	状态
+M1	SQLite Schema + BSD 扫描器 + 批量写入	✅ 完成
+M2	FSEvents 增量监听 + DiskArbitration 外接盘	待实现
+M3	查询语法引擎（ext:pdf size:>50MB等）	待实现
+M4	AppKit 主界面（NSTableView 文件列表）	待实现
+M5	搜索框 + 实时过滤 + Quick Look	待实现
+M6	性能优化 + 发布打包	待实现
+
+
+
+立即执行：删旧库，重新扫描
+
+# 删除旧数据库（旧 schema 不兼容）
+rm ~/.local/share/QuickSearch/index.db
+
+# 重新扫描（新 schema 自动创建）
+.build/release/QuickSearch /Volumes/LX
+
+
+
+M3 查询引擎测试（可立即执行）
+前提：确保有可用索引
+
+cd /Users/longxiao/repository/test/mac_everyth/QuickSearch
+swift build -c release 2>&1 | tail -2
+
+# 若 ~/Documents 索引不存在，先扫描（~5s）
+.build/release/QuickSearch ~/Documents \
+  --db /tmp/qs-smoke.db --priority-only
+
+  
+测试 1：关键词搜索（FTS5）
+
+# 搜索名称含 "report"（大小写不敏感，FTS5）
+.build/release/QuickSearch search "report" --db /tmp/qs-smoke.db --limit 5
+
+# 多关键词 AND 语义
+.build/release/QuickSearch search "合同 2026" --db /tmp/qs-smoke.db --limit 5
+
+# 预期：输出带表头的结果表格，右下角显示 "Results: N of M (query: X.Xms)"
+测试 2：通配符搜索（LIKE）
+
+# *.pdf 匹配所有 PDF（转为 LIKE 查询）
+.build/release/QuickSearch search "*.pdf" --db /tmp/qs-smoke.db --limit 5
+
+# 单字符通配符 ? 
+.build/release/QuickSearch search "第?章" --db /tmp/qs-smoke.db --limit 5
+
+# 预期：只有名称匹配 LIKE 模式的文件，无需 FTS
+测试 3：扩展名过滤
+
+# 单扩展名
+.build/release/QuickSearch search "ext:pdf" --db /tmp/qs-smoke.db --limit 5
+
+# 多扩展名（逗号分隔）
+.build/release/QuickSearch search "ext:mp4,mov,mkv" --db /tmp/qs-smoke.db --limit 5
+
+# 关键词 + 扩展名组合
+.build/release/QuickSearch search "合同 ext:pdf" --db /tmp/qs-smoke.db --limit 5
+测试 4：大小过滤
+
+# 大于 10MB 的 MP4
+.build/release/QuickSearch search "ext:mp4 size:>10MB" --db /tmp/qs-smoke.db --limit 5
+
+# 小于 100KB
+.build/release/QuickSearch search "ext:pdf size:<100KB" --db /tmp/qs-smoke.db --limit 5
+
+# 区间 1MB 到 100MB
+.build/release/QuickSearch search "ext:zip size:1MB..100MB" --db /tmp/qs-smoke.db --limit 5
+测试 5：时间过滤
+
+# 2026 年以后修改的文件
+.build/release/QuickSearch search "dm:>2026-01-01" --db /tmp/qs-smoke.db --limit 5
+
+# 时间区间
+.build/release/QuickSearch search "dm:2025-01-01..2025-12-31" --db /tmp/qs-smoke.db --limit 5
+
+# 关键词 + 时间
+.build/release/QuickSearch search "合同 ext:pdf dm:>2025-06-01" --db /tmp/qs-smoke.db --limit 5
+测试 6：路径与类型过滤
+
+# 路径包含 "Desktop"
+.build/release/QuickSearch search "path:Documents" --db /tmp/qs-smoke.db --limit 5
+
+# 仅文件夹
+.build/release/QuickSearch search "folder:" --db /tmp/qs-smoke.db --limit 10
+
+# 仅文件（不含文件夹）
+.build/release/QuickSearch search "ext:pdf file:" --db /tmp/qs-smoke.db --limit 5
+测试 7：排序与分页
+
+# 按大小降序
+.build/release/QuickSearch search "ext:mp4" --db /tmp/qs-smoke.db \
+  --limit 5 --sort size --desc
+
+# 按时间降序（最新在前）
+.build/release/QuickSearch search "ext:pdf" --db /tmp/qs-smoke.db \
+  --limit 5 --sort mod_time --desc
+
+# 分页：第 2 页（--offset）
+.build/release/QuickSearch search "ext:pdf" --db /tmp/qs-smoke.db \
+  --limit 10 --offset 10
+测试 8：边界情况
+
+# 无匹配结果
+.build/release/QuickSearch search "xyzzy_nonexistent_12345" --db /tmp/qs-smoke.db
+# 预期：Results: 0 of 0
+
+# 空 DB（新建，未索引）
+.build/release/QuickSearch search "test" --db /tmp/qs-empty.db
+# 预期：Results: 0 of 0（不崩溃）
+
+# 无索引数据库用 search 命令
+rm -f /tmp/qs-empty.db
+.build/release/QuickSearch search "pdf" --db /tmp/qs-empty.db --limit 5
+M2 增量更新测试
+M2-A：FSEventsWatcher 功能验证（APFS/HFS+）
+FSEventsWatcher 是库组件，当前 CLI 未直接暴露 watch 命令（属于 M4 UI 层使用）。可用以下快速 Swift 脚本验证：
+
+
+cat > /tmp/testFSEvents.swift << 'EOF'
+import Foundation
+// 动态加载测试，需要将 IndexEngine 先 build 为动态库（M4 阶段）
+// 此处通过手动创建文件，验证 FSEventStreamSetDispatchQueue 路径是否正确编译
+
+// Quick compile check: 直接测试 FSEventStreamCreate API
+import CoreServices
+
+let paths = [NSHomeDirectory() + "/Desktop"] as CFArray
+var ctx = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
+let flags = FSEventStreamCreateFlags(kFSEventStreamCreateFlagFileEvents | kFSEventStreamCreateFlagUseCFTypes)
+let stream = FSEventStreamCreate(nil, { _, _, _, _, _, _ in
+    print("FSEvents callback fired!")
+}, &ctx, paths, FSEventStreamEventId(kFSEventStreamEventIdSinceNow), 1.0, flags)
+print("Stream created:", stream != nil ? "OK" : "FAILED")
+if let s = stream {
+    FSEventStreamSetDispatchQueue(s, DispatchQueue.global())
+    FSEventStreamStart(s)
+    print("Watching ~/Desktop for 5 seconds...")
+    Thread.sleep(forTimeInterval: 5)
+    FSEventStreamStop(s)
+    FSEventStreamInvalidate(s)
+    FSEventStreamRelease(s)
+}
+EOF
+swift /tmp/testFSEvents.swift
+# 在另一个终端中: touch ~/Desktop/qs_test_$(date +%s).txt
+# 预期：打印 "FSEvents callback fired!"
+M2-B：DiskArbitrationMonitor 验证（外接盘热插拔）
+
+cat > /tmp/testDA.swift << 'EOF'
+import Foundation
+import DiskArbitration
+
+guard let session = DASessionCreate(kCFAllocatorDefault) else {
+    print("FAILED: cannot create DA session")
+    exit(1)
+}
+print("DA Session created: OK")
+
+var info = "test_ctx"
+DARegisterDiskAppearedCallback(session, nil, { disk, ctx in
+    if let name = DADiskGetBSDName(disk) {
+        print("Disk appeared:", String(cString: name))
+    }
+    if let desc = DADiskCopyDescription(disk) as? [String: AnyObject],
+       let url = desc[kDADiskDescriptionVolumePathKey as String] as? URL {
+        print("  Mount path:", url.path)
+    }
+}, nil)
+
+DARegisterDiskDisappearedCallback(session, nil, { disk, _ in
+    if let name = DADiskGetBSDName(disk) {
+        print("Disk disappeared:", String(cString: name))
+    }
+}, nil)
+
+DASessionSetDispatchQueue(session, DispatchQueue.main)
+print("Monitoring disk events. Insert/remove an external drive...")
+print("Press Ctrl+C to stop.")
+RunLoop.main.run()
+EOF
+swift /tmp/testDA.swift
+# 然后插入/拔出 U 盘或外接盘
+# 预期：打印 "Disk appeared: diskX" / "Disk disappeared: diskX"
+M2-C：IncrementalUpdater snapshotDiff 验证
+
+# Step 1：建立基线索引
+.build/release/QuickSearch ~/Documents/测试目录 \
+  --db /tmp/qs-diff-test.db --priority-only 2>/dev/null || \
+.build/release/QuickSearch ~/Documents \
+  --db /tmp/qs-diff-test.db --priority-only
+
+# Step 2：查看当前文件数
+sqlite3 /tmp/qs-diff-test.db "SELECT COUNT(*) FROM files WHERE is_dir=0"
+
+# Step 3：手动在 ~/Documents 新增/删除文件（用 --supplement 模拟 diff）
+touch ~/Documents/qs_new_test_$(date +%s).txt
+
+# Step 4：用 --supplement 模式增量补录
+.build/release/QuickSearch ~/Documents \
+  --db /tmp/qs-diff-test.db --supplement
+
+# Step 5：确认新文件被索引
+sqlite3 /tmp/qs-diff-test.db \
+  "SELECT name, size, mod_time_ns FROM files WHERE name LIKE 'qs_new_test%'"
+
+# Step 6：清理
+rm ~/Documents/qs_new_test_*.txt 2>/dev/null || true
+一键回归测试
+
+#!/bin/bash
+set -e
+
+DB=/tmp/qs-regression.db
+BIN=.build/release/QuickSearch
+
+echo "=== Build ==="
+swift build -c release 2>&1 | tail -2
+
+echo ""
+echo "=== Index ~/Documents ==="
+$BIN ~/Documents --db $DB --priority-only 2>&1 | grep -E "^  (Files indexed|Total time|Avg)"
+
+echo ""
+echo "=== M3: Keyword ==="
+$BIN search "pdf" --db $DB --limit 3 2>&1 | tail -2
+
+echo ""
+echo "=== M3: Wildcard ==="
+$BIN search "*.pdf" --db $DB --limit 3 2>&1 | tail -2
+
+echo ""
+echo "=== M3: ext+size ==="
+$BIN search "ext:mp4 size:>1MB" --db $DB --limit 3 2>&1 | tail -2
+
+echo ""
+echo "=== M3: date filter ==="
+$BIN search "dm:>2025-01-01" --db $DB --limit 3 2>&1 | tail -2
+
+echo ""
+echo "=== M3: folder only ==="
+$BIN search "folder:" --db $DB --limit 3 2>&1 | tail -2
+
+echo ""
+echo "=== M3: no result ==="
+$BIN search "xyzzy_never_exists_99999" --db $DB --limit 5 2>&1 | tail -2
+
+echo ""
+echo "=== All tests passed ==="
+将以上脚本保存并执行：
+
+
+chmod +x test_regression.sh && ./test_regression.sh

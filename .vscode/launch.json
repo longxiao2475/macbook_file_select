@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:mac_everyth}/QuickSearch",
+            "name": "Debug QuickSearch (QuickSearch)",
+            "target": "QuickSearch",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug QuickSearch (QuickSearch)"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:mac_everyth}/QuickSearch",
+            "name": "Release QuickSearch (QuickSearch)",
+            "target": "QuickSearch",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release QuickSearch (QuickSearch)"
+        }
+    ]
+}

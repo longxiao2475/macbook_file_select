@@ -1,0 +1,89 @@
+{
+  "": {
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/master.swiftdeps"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/BSDScanner.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/BSDScanner.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/BSDScanner.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/BSDScanner~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/BSDScanner.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/BSDScanner.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/BatchWriter.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/BatchWriter.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/BatchWriter.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/BatchWriter~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/BatchWriter.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/BatchWriter.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/DiskArbitrationMonitor.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/DiskArbitrationMonitor.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/DiskArbitrationMonitor.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/DiskArbitrationMonitor~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/DiskArbitrationMonitor.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/DiskArbitrationMonitor.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/FSEventsWatcher.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/FSEventsWatcher.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/FSEventsWatcher.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/FSEventsWatcher~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/FSEventsWatcher.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/FSEventsWatcher.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/IncrementalUpdater.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/IncrementalUpdater.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/IncrementalUpdater.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/IncrementalUpdater~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/IncrementalUpdater.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/IncrementalUpdater.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/IndexManager.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/IndexManager.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/IndexManager.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/IndexManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/IndexManager.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/IndexManager.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/InodeSortedScanner.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/InodeSortedScanner.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/InodeSortedScanner.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/InodeSortedScanner~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/InodeSortedScanner.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/InodeSortedScanner.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/QueryBuilder.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/QueryBuilder.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/QueryBuilder.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/QueryBuilder~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/QueryBuilder.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/QueryBuilder.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/QueryParser.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/QueryParser.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/QueryParser.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/QueryParser~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/QueryParser.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/QueryParser.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/SearchEngine.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/SearchEngine.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/SearchEngine.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/SearchEngine~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/SearchEngine.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/SearchEngine.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/SearchQuery.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/SearchQuery.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/SearchQuery.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/SearchQuery~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/SearchQuery.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/SearchQuery.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/VolumeInfo.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/VolumeInfo.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/VolumeInfo.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/VolumeInfo~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/VolumeInfo.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/VolumeInfo.dia"
+  }
+}

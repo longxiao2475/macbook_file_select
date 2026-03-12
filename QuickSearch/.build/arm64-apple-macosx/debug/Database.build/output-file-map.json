@@ -1,0 +1,19 @@
+{
+  "": {
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/debug/Database.build/master.swiftdeps"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/Database/DatabaseManager.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/debug/Database.build/DatabaseManager.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/debug/Database.build/DatabaseManager.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/debug/Database.build/DatabaseManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/debug/Database.build/DatabaseManager.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/debug/Database.build/DatabaseManager.dia"
+  },
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/Database/Schema.swift": {
+    "dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/debug/Database.build/Schema.d",
+    "object": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/debug/Database.build/Schema.swift.o",
+    "swiftmodule": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/debug/Database.build/Schema~partial.swiftmodule",
+    "swift-dependencies": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/debug/Database.build/Schema.swiftdeps",
+    "diagnostics": "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/arm64-apple-macosx/debug/Database.build/Schema.dia"
+  }
+}

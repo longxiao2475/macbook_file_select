@@ -1,0 +1,91 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "Database-arm64-apple-macosx26.0-debug.module": ["<Database-arm64-apple-macosx26.0-debug.module>"]
+  "IndexEngine-arm64-apple-macosx26.0-debug.module": ["<IndexEngine-arm64-apple-macosx26.0-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "QuickSearch-arm64-apple-macosx26.0-debug.module": ["<QuickSearch-arm64-apple-macosx26.0-debug.module>"]
+  "main": ["<Database-arm64-apple-macosx26.0-debug.module>","<IndexEngine-arm64-apple-macosx26.0-debug.module>","<QuickSearch-arm64-apple-macosx26.0-debug.module>"]
+  "test": ["<Database-arm64-apple-macosx26.0-debug.module>","<IndexEngine-arm64-apple-macosx26.0-debug.module>","<QuickSearch-arm64-apple-macosx26.0-debug.module>"]
+default: "main"
+nodes:
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/Database/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/QuickSearch/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Database.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/Database/DatabaseManager.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/Database/Schema.swift"]
+    outputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Database.build/sources"]
+    description: "Write auxiliary file /Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Database.build/sources"
+
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/BSDScanner.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/BatchWriter.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/DiskArbitrationMonitor.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/FSEventsWatcher.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/IncrementalUpdater.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/IndexManager.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/InodeSortedScanner.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/QueryBuilder.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/QueryParser.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/SearchEngine.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/SearchQuery.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/VolumeInfo.swift"]
+    outputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/sources"]
+    description: "Write auxiliary file /Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/sources"
+
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/QuickSearch.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/QuickSearch/main.swift"]
+    outputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/QuickSearch.build/sources"]
+    description: "Write auxiliary file /Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/QuickSearch.build/sources"
+
+  "/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Library/Developer/CommandLineTools/usr/bin/swiftc"]
+    outputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+
+  "<Database-arm64-apple-macosx26.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules/Database.swiftmodule"]
+    outputs: ["<Database-arm64-apple-macosx26.0-debug.module>"]
+
+  "<IndexEngine-arm64-apple-macosx26.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules/IndexEngine.swiftmodule"]
+    outputs: ["<IndexEngine-arm64-apple-macosx26.0-debug.module>"]
+
+  "<QuickSearch-arm64-apple-macosx26.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules/QuickSearch.swiftmodule"]
+    outputs: ["<QuickSearch-arm64-apple-macosx26.0-debug.module>"]
+
+  "C.Database-arm64-apple-macosx26.0-debug.module":
+    tool: shell
+    inputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/Database/DatabaseManager.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/Database/Schema.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Database.build/sources"]
+    outputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules/Database.swiftmodule"]
+    description: "Compiling Swift Module 'Database' (2 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","Database","-emit-dependencies","-emit-module","-emit-module-path","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules/Database.swiftmodule","-output-file-map","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Database.build/output-file-map.json","-parse-as-library","-incremental","@/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Database.build/sources","-I","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx12.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j10","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Database.build/include/Database-Swift.h","-swift-version","5","-Xfrontend","-experimental-lazy-typecheck","-Xfrontend","-experimental-skip-all-function-bodies","-Xfrontend","-experimental-allow-module-with-compiler-errors","-Xfrontend","-empty-abi-descriptor","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g","-package-name","quicksearch"]
+
+  "C.IndexEngine-arm64-apple-macosx26.0-debug.module":
+    tool: shell
+    inputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/BSDScanner.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/BatchWriter.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/DiskArbitrationMonitor.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/FSEventsWatcher.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/IncrementalUpdater.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/IndexManager.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/InodeSortedScanner.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/QueryBuilder.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/QueryParser.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/SearchEngine.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/SearchQuery.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/VolumeInfo.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules/Database.swiftmodule","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/sources"]
+    outputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules/IndexEngine.swiftmodule"]
+    description: "Compiling Swift Module 'IndexEngine' (12 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","IndexEngine","-emit-dependencies","-emit-module","-emit-module-path","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules/IndexEngine.swiftmodule","-output-file-map","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/output-file-map.json","-parse-as-library","-incremental","@/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/sources","-I","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx12.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j10","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/IndexEngine.build/include/IndexEngine-Swift.h","-swift-version","5","-Xfrontend","-experimental-lazy-typecheck","-Xfrontend","-experimental-skip-all-function-bodies","-Xfrontend","-experimental-allow-module-with-compiler-errors","-Xfrontend","-empty-abi-descriptor","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g","-package-name","quicksearch"]
+
+  "C.QuickSearch-arm64-apple-macosx26.0-debug.module":
+    tool: shell
+    inputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/QuickSearch/main.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules/IndexEngine.swiftmodule","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/QuickSearch.build/sources"]
+    outputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules/QuickSearch.swiftmodule"]
+    description: "Compiling Swift Module 'QuickSearch' (1 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","QuickSearch","-emit-dependencies","-emit-module","-emit-module-path","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules/QuickSearch.swiftmodule","-output-file-map","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/QuickSearch.build/output-file-map.json","-incremental","@/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/QuickSearch.build/sources","-I","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx12.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j10","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/longxiao/repository/test/mac_everyth/QuickSearch/.build/index-build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-swift-version","5","-Xfrontend","-experimental-lazy-typecheck","-Xfrontend","-experimental-skip-all-function-bodies","-Xfrontend","-experimental-allow-module-with-compiler-errors","-Xfrontend","-empty-abi-descriptor","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g","-package-name","quicksearch"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/Database/","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/IndexEngine/","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Sources/QuickSearch/","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Package.swift","/Users/longxiao/repository/test/mac_everyth/QuickSearch/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+
